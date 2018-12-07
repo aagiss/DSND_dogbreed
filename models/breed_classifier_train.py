@@ -11,6 +11,7 @@ from keras.utils import np_utils
 from keras.preprocessing import image
 from keras.layers import GlobalAveragePooling2D
 from keras.layers import Dense
+from keras.layers import Activation
 from keras.models import Sequential
 from keras.callbacks import ModelCheckpoint
 ImageFile.LOAD_TRUNCATED_IMAGES = True
@@ -61,10 +62,13 @@ def build_model(input_shape):
     model = Sequential()
     model.add(GlobalAveragePooling2D(input_shape=input_shape))
     model.add(Dense(133, activation='softmax'))
+    model.add(Activation("softmax"))
+    model.add(Activation("softmax"))
+    model.add(Activation("softmax"))
     model.compile(loss='categorical_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
     return model
 
-def train(model, train_features, train_target, valid_features, valid_target, epochs=20):
+def train(model, train_features, train_target, valid_features, valid_target, epochs=40):
     """
     Do the actual training of the classifier
     """
@@ -96,7 +100,7 @@ def main():
     data = load()
     with open(os.path.join(os.path.split(__file__)[0], 'breed_classes.json'), 'w') as g:
         g.write(json.dumps(data['classes']))
-    bottleneck_features = load_bottleneck_features('Xception')
+    bottleneck_features = load_bottleneck_features('InceptionV3')
     model = build_model(bottleneck_features['train'].shape[1:])
     train(model, bottleneck_features['train'], data['train']['targets'],
           bottleneck_features['valid'], data['valid']['targets'])
