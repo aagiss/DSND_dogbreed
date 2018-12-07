@@ -1,10 +1,11 @@
+"""
+Module to detect a dog in an image
+"""
 import sys
-import os
 import numpy as np
 from cnn_common import path_to_tensor
 from keras.applications.resnet50 import ResNet50
-from keras.applications.resnet50 import preprocess_input, decode_predictions
-from keras.preprocessing import image
+from keras.applications.resnet50 import preprocess_input
 
 ResNet50_model = ResNet50(weights="imagenet")
 
@@ -19,9 +20,9 @@ def dog_detector(img_path):
         The number of faces detected in the image
     """
     tensor = path_to_tensor(img_path)
-    img = preprocess_input(path_to_tensor(img_path))
+    img = preprocess_input(tensor)
     prediction = np.argmax(ResNet50_model.predict(img))
-    return ((prediction <= 268) & (prediction >= 151))
+    return (prediction <= 268) & (prediction >= 151)
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:

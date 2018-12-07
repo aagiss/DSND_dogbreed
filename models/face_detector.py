@@ -1,10 +1,13 @@
+"""
+Module to detect a human face in an image
+"""
 import sys
 import os
 import cv2
 
 # extract the pre-trained face detector
 face_cascade = cv2.CascadeClassifier(os.path.join(os.path.split(os.path.abspath(__file__))[0],
-                                                 'haarcascade_frontalface_alt.xml'))
+                                                  'haarcascade_frontalface_alt.xml'))
 
 def face_detector(img_path):
     """
