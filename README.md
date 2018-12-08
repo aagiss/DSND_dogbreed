@@ -32,16 +32,16 @@ In this project the dog breed training dataset is provided by Udacity and is NOT
 
 ## Project Statement <a name="statement"></a>
 
+In this project we try to detect humans or dogs and predict their most likelly dog breed.
+
 There are 3 main steps in the process
 1. Detection of Dogs in an image
 2. Detection of Humans in an image
 3. Dog Breed classification (provided that a dog or human was detected)
 
-Deep Learning and specifically CNNs are used for (1) and (3). Human detection is done using facedetection from the OpenCV library.
+Deep Learning and specifically CNNs can and are used for (1) and (3). Human detection can be done as face detection with traditional Computer Vision algorithms. Alternatively, deep learning could be used for whole human (and not just face) detection as well provided that there is a dataset available. 
 
-ResNet50 and Xception CNNs are used for the deep learning image classification. Specifically for detecting dogs in images ResNet50 is run as trained for with the publically available ImageNet training set. This returns a category out of about 1000 possible categories for the image. If that category represents a dog we do assume a dog is present in the image. 
-
-On the other hand, for dog breed classification we do not use Xception directly. Rather we use transfer learning. In other words we use a pretrained version of Xception but do replace the final dense layer (which was predicting ImageNet categories) with a different one that predicts dog breeds. This layer (and only this layer) is then trained on a dataset provided by Udacity.
+With recent advancments in Image Processing we did expect to have high accuracy on this task. Moreover, predicting a dog breed for humans is a fun part of the project thus we developed an application available to anyone online.
 
 ## Metrics <a name="metrics"></a>
 
