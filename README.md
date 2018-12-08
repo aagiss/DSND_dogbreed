@@ -134,7 +134,6 @@ Pip installing the same packages using <pre>pip install -r requirements.txt</pre
 
 To install on Heroku a custom buildpack supporing OpenCV is needed.
 
-
 ## File Descriptions <a name="files"></a>
 
  
