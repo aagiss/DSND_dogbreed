@@ -17,6 +17,7 @@ UPLOAD_FOLDER = os.path.join(os.path.split(__file__)[0], 'uploads' )
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.secret_key = 'aagiss@gmail.com#DSND'
 FILES = list(sorted(glob.glob('uploads/*.jpg')))[-20:]
 PREDICTIONS = []
 for img_path in FILES:
@@ -56,7 +57,7 @@ def upload():
     img_path = os.path.join(app.config['UPLOAD_FOLDER'], img_filename)
     if is_file_upload:
         image_file.save(tmp_path)
-        img_url = img_path
+        img_url = os.path.join('uploads', img_filename)
     else:
         try:
             img_url = request.form.get('url')
@@ -65,7 +66,7 @@ def upload():
                 raw_data = base64.b64decode(coded_string)
                 with open(tmp_path, 'wb') as f:
                     f.write(raw_data)
-                img_url = img_path
+                img_url = os.path.join('uploads', img_filename)
             else:
                 r = requests.get(request.form.get('url'), stream=True)
                 if r.status_code == 200:
@@ -112,7 +113,6 @@ def send_image(path):
     return send_from_directory('uploads', path)
 
 def main():
-    app.secret_key = 'aagiss@gmail.com#DSND'
     app.debug = True
     app.run(host='0.0.0.0', port=3001, debug=True)
 
