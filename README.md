@@ -64,7 +64,7 @@ True:American_eskimo_dog Predicted:Pomeranian Count:3
 True:Finnish_spitz Predicted:Icelandic_sheepdog Count:3
 True:Lowchen Predicted:Havanese Count:3
 </pre>
-Manual inspection of images of these breeds show that is is hard even for humans to make a distinction from an image.
+Manual inspection of images of these breeds show that it is hard even for humans to make a distinction from an image.
 
 
 
