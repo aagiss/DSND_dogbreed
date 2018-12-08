@@ -15,6 +15,7 @@ Use Deep Learning and Keras to classify dog breeds or which breed a human face l
 9. [Running the code](https://github.com/aagiss/DSND_dogbreed#running)
 10. [Licensing, Authors, and Acknowledgements](https://github.com/aagiss/DSND_dogbreed#licensing)
 
+<img src="https://github.com/aagiss/DSND_dogbreed/raw/master/screenshot.jpg">
 
 ## Project Overview <a name="overview"></a>
 
@@ -131,8 +132,6 @@ conda install -c anaconda requests
 </pre>
 
 Pip installing the same packages using <pre>pip install -r requirements.txt</pre> and running the code using Python versions 3.* should produce no issues.
-
-To install on Heroku a custom buildpack supporing OpenCV is needed.
 
 ## File Descriptions <a name="files"></a>
 
