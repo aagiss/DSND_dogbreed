@@ -22,7 +22,7 @@ This project is the capstone project of the Udacity Data Scientist Nanodegree pr
 
 An image is provided and if its a dog we will predict dog breed or if it is a human face we will provide a prediction of the dog breed it looks most like. 
 
-A web app is available [here]()
+A web app is available at [https://aa-dogbreed.herokuapp.com](https://aa-dogbreed.herokuapp.com)
 
 This is a task of image classification. Image Classification has changed over the past few years through the introduction of Convolutional Neural Networks (i.e. CNN). In this project we use CNNs. Although we classify dog breeds the same techniques can be used for any image classification task provided that we are given an appropriate training dataset.
 
@@ -75,7 +75,7 @@ Arround 1 of out of 10 images includes a human face, some times posing and some 
 ## Data Visualization <a name="datavisualization"></a>
 
 Since this is essentially a classification task, there are few visualizations that can be shown.
-These are shown in the web app [here]()
+These are shown in the web app [here](https://aa-dogbreed.herokuapp.com)
 
 
 ## Methodology <a name="methodology"></a>
@@ -103,7 +103,7 @@ This was hard to evaluate with the given dataset as some dog images actually con
 
 The main process of the project though was dog breed classification and in that task we achieved 84% accuracy among the 133 classes, which we consider is a good result, leading to a usable system.
 
-Experimental validation with randomly selected images through the [app]() validated these results.
+Experimental validation with randomly selected images through the [app](https://aa-dogbreed.herokuapp.com) validated these results.
 
 ## Conclusion <a name="conclusion"></a>
 
