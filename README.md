@@ -56,6 +56,18 @@ To sum up, given that an image has been correctly identified as having a dog we 
 84% Accuracy on dog breed classification
 </pre>
 
+We also provide a confusion matrix:
+<img src="https://github.com/aagiss/DSND_dogbreed/raw/master/confusion_matrix.png">
+Three types of errors have 3 or more errors in the testing set (and correspond to the color-lighted non-diagonal spots in the image).
+<pre>
+True:American_eskimo_dog Predicted:Pomeranian Count:3
+True:Finnish_spitz Predicted:Icelandic_sheepdog Count:3
+True:Lowchen Predicted:Havanese Count:3
+</pre>
+Manual inspection of images of these breeds show that is is hard even for humans to make a distinction from an image.
+
+
+
 Unfortunatelly, we did not have a good data set for evaluating human face detection and dog detection. Nevertheless, using a dataset of dogs and a dataset of humans (also provided by Udacity) we were able to predict almost perfectly dog images as ones containing dogs and human images as not containing dogs. Human face detection was a bit less accurate with perfect detection of human faces in the dataset, but 13% of the dog images detected as containing faces (as we explain in the following section that was not wrong though).
 
 ## Data Exploration <a name="dataexploration"></a>
@@ -97,7 +109,7 @@ The choice of the Xception network was done through <b>refinement</b> of the res
 
 ## Results <a name="results"></a>
 
-As mentioned above dog detection had nearly perfect accuracy.
+As mentioned above dog detection had nearly perfect accuracy on the testing dataset. However, during manual experiments with random images from the internet we came accross some false positives where the image represented a cat.
 
 Face detection had perfect recall on our limited tests, nevertheless some false positives have been encountered.
 This was hard to evaluate with the given dataset as some dog images actually contained human faces.
@@ -111,10 +123,10 @@ Experimental validation with randomly selected images through the [app](https://
 Image Classification has become an easy task by using transfer learning and some state of the art CNNs. In this project we used out of the shelf image processing modules and used transfer learning and the Xception network for our main task i.e. dog breed classification.
 
 One point, that was hard to justify was why the Xception network outperformed all other candidates such as inception-v3 we used. 
-On imagenet reports from various sources do report better accuracy for Xception than Inception V3. 
+On imagenet, reports from various sources do report better accuracy for Xception than Inception V3. 
 Nevertheless the difference is minor (<1% or less) compared to our results (5% difference).
 
-Looking at the training logs of the two networks we saw that in Inception, validation loss stopped improving as soon as the 2nd epoch, although training loss continued to decline and validation accuracy did actually improved. I think this strange phenomenon can be attributes to the following: probability assigned by the softmax output of the network is initially consetrated on few classes, however as the model is trained the values of the non-max class increase and although the max class is the correct one probability is spread in such way that crossentropy descreases. We verified this intuition by adding 3 softmax output layers in the output (inception git branch). Adding a softmax output after a previous softmax output helps reduce the entropy of the result. When we did that difference dropped from 5% to 3%.
+Looking at the training logs of the two networks we saw that in Inception, validation loss stopped improving as soon as the 2nd epoch, although training loss continued to decline and validation accuracy did actually improved. I think this strange phenomenon can be attributed to the following: probability assigned by the softmax output of the network is initially consetrated on few classes, however as the model is trained the values of the non-max class increase and although the max class is the correct one probability is spread in such way that crossentropy descreases. We verified this intuition by adding 3 softmax output layers in the output (inception git branch). Adding a softmax output after a previous softmax output helps reduce the entropy of the result. When we did that difference in acuraccy between networks, dropped from 5% to 3%.
 
 One aspect of the implementation that can be improved is about human detection. We do accuratelly detect human faces, however detecting whole human figures would be more challenging and usefull for the concept of this app. OpenCV does not include an out of shelf module for that task and developing one would require lots of training data we did not have access to. Thus, we chose to let this part for a future implementation.
 
@@ -131,7 +143,7 @@ conda install -c anaconda flask
 conda install -c anaconda requests
 </pre>
 
-Pip installing the same packages using <pre>pip install -r requirements.txt</pre> and running the code using Python versions 3.* should produce no issues.
+Alternatively, pip installing the same packages using <pre>pip install -r requirements.txt</pre> and running the code using Python versions 3.* should produce no issues.
 
 ## File Descriptions <a name="files"></a>
 
