@@ -130,7 +130,7 @@ conda install -c anaconda flask
 conda install -c anaconda requests
 </pre>
 
-Pip installing the same packages and running the code using Python versions 3.* should produce no issues.
+Pip installing the same packages using <pre>pip install -r requirements.txt</pre> and running the code using Python versions 3.* should produce no issues.
 
 
 ## File Descriptions <a name="files"></a>
