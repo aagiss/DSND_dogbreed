@@ -20,4 +20,4 @@ RUN python app/init.py
 
 # Run the app.  CMD is required to run on Heroku
 # $PORT is set by Heroku
-CMD gunicorn app:app --bind 0.0.0.0:$PORT
+CMD gunicorn app:app --workers 2 --timeout 120 --bind 0.0.0.0:$PORT
