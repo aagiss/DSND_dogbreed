@@ -126,6 +126,8 @@ conda install -c conda-forge keras
 conda install -c anaconda pillow
 conda install -c anaconda scikit-learn
 conda install -c conda-forge tqdm
+conda install -c anaconda flask
+conda install -c anaconda requests
 </pre>
 
 Pip installing the same packages and running the code using Python versions 3.* should produce no issues.
