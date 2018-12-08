@@ -15,7 +15,7 @@ Use Deep Learning and Keras to classify dog breeds or which breed a human face l
 9. [Running the code](https://github.com/aagiss/DSND_dogbreed#running)
 10. [Licensing, Authors, and Acknowledgements](https://github.com/aagiss/DSND_dogbreed#licensing)
 
-<img src="https://github.com/aagiss/DSND_dogbreed/raw/master/screenshot.jpg">
+<a href="https://aa-dogbreed.herokuapp.com"><img src="https://github.com/aagiss/DSND_dogbreed/raw/master/screenshot.jpg"></a>
 
 ## Project Overview <a name="overview"></a>
 
