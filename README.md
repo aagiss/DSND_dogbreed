@@ -132,6 +132,8 @@ conda install -c anaconda requests
 
 Pip installing the same packages using <pre>pip install -r requirements.txt</pre> and running the code using Python versions 3.* should produce no issues.
 
+To install on Heroku a custom buildpack supporing OpenCV is needed.
+
 
 ## File Descriptions <a name="files"></a>
 
