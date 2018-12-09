@@ -29,7 +29,6 @@ This is a task of image classification. Image Classification has changed over th
 
 In this project the dog breed training dataset is provided by Udacity and is NOT shared in this repository.
 
-
 ## Project Statement <a name="statement"></a>
 
 In this project we try to detect humans or dogs and predict their most likelly dog breed.
@@ -65,8 +64,6 @@ True:Finnish_spitz Predicted:Icelandic_sheepdog Count:3
 True:Lowchen Predicted:Havanese Count:3
 </pre>
 Manual inspection of images of these breeds show that it is hard even for humans to make a distinction from an image.
-
-
 
 Unfortunatelly, we did not have a good data set for evaluating human face detection and dog detection. Nevertheless, using a dataset of dogs and a dataset of humans (also provided by Udacity) we were able to predict almost perfectly dog images as ones containing dogs and human images as not containing dogs. Human face detection was a bit less accurate with perfect detection of human faces in the dataset, but 13% of the dog images detected as containing faces (as we explain in the following section that was not wrong though).
 
@@ -148,7 +145,6 @@ Alternatively, pip installing the same packages using <pre>pip install -r requir
 
 ## File Descriptions <a name="files"></a>
 
- 
 <pre>
 - data # data used for this task and ETL code
   |- bottleneck_features  # precalculated features from VGG19, ResNet50, Inception, Exception 
@@ -164,7 +160,6 @@ Alternatively, pip installing the same packages using <pre>pip install -r requir
   |- cnn_common.py # common functions for CNN training or predicting
 - README.md
 </pre>
-
 
 ## Running the code <a name="running"></a>
 
