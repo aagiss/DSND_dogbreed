@@ -29,7 +29,6 @@ This is a task of image classification. Image Classification has changed over th
 
 In this project the dog breed training dataset is provided by Udacity and is NOT shared in this repository.
 
-
 ## Project Statement <a name="statement"></a>
 
 In this project we try to detect humans or dogs and predict their most likelly dog breed.
@@ -57,7 +56,7 @@ To sum up, given that an image has been correctly identified as having a dog we 
 </pre>
 
 We also provide a confusion matrix:
-<img src="https://github.com/aagiss/DSND_dogbreed/raw/master/confusion_matrix.png">
+<img src="https://github.com/aagiss/DSND_dogbreed/raw/master/confusion_matrix.png"><br/>
 Three types of errors have 3 or more errors in the testing set (and correspond to the color-lighted non-diagonal spots in the image).
 <pre>
 True:American_eskimo_dog Predicted:Pomeranian Count:3
@@ -65,8 +64,6 @@ True:Finnish_spitz Predicted:Icelandic_sheepdog Count:3
 True:Lowchen Predicted:Havanese Count:3
 </pre>
 Manual inspection of images of these breeds show that it is hard even for humans to make a distinction from an image.
-
-
 
 Unfortunatelly, we did not have a good data set for evaluating human face detection and dog detection. Nevertheless, using a dataset of dogs and a dataset of humans (also provided by Udacity) we were able to predict almost perfectly dog images as ones containing dogs and human images as not containing dogs. Human face detection was a bit less accurate with perfect detection of human faces in the dataset, but 13% of the dog images detected as containing faces (as we explain in the following section that was not wrong though).
 
@@ -90,8 +87,7 @@ Arround 1 of out of 10 images includes a human face, some times posing and some 
 Since this is essentially a classification task, the main visualizations concern metrics.
 Nevertheless, in the following plot the number of samples per breed in the training set are presented.
 
-<img src="https://github.com/aagiss/DSND_dogbreed/raw/master/samples_per_breed_train.png" style="max-height: 200px; width:auto">
-
+<img src="https://github.com/aagiss/DSND_dogbreed/raw/master/samples_per_breed_train.png" height="1200" width="800">
 
 ## Methodology <a name="methodology"></a>
 
@@ -149,7 +145,6 @@ Alternatively, pip installing the same packages using <pre>pip install -r requir
 
 ## File Descriptions <a name="files"></a>
 
- 
 <pre>
 - data # data used for this task and ETL code
   |- bottleneck_features  # precalculated features from VGG19, ResNet50, Inception, Exception 
@@ -165,7 +160,6 @@ Alternatively, pip installing the same packages using <pre>pip install -r requir
   |- cnn_common.py # common functions for CNN training or predicting
 - README.md
 </pre>
-
 
 ## Running the code <a name="running"></a>
 
