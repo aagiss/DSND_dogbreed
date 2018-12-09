@@ -90,7 +90,7 @@ Arround 1 of out of 10 images includes a human face, some times posing and some 
 Since this is essentially a classification task, the main visualizations concern metrics.
 Nevertheless, in the following plot the number of samples per breed in the training set are presented.
 
-<img src="https://github.com/aagiss/DSND_dogbreed/raw/master/samples_per_breed_train.png">
+<img src="https://github.com/aagiss/DSND_dogbreed/raw/master/samples_per_breed_train.png" style="max-height: 200px; width:auto">
 
 
 ## Methodology <a name="methodology"></a>
