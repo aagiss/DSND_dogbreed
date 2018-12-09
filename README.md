@@ -57,7 +57,7 @@ To sum up, given that an image has been correctly identified as having a dog we 
 </pre>
 
 We also provide a confusion matrix:
-<img src="https://github.com/aagiss/DSND_dogbreed/raw/master/confusion_matrix.png">
+<img src="https://github.com/aagiss/DSND_dogbreed/raw/master/confusion_matrix.png"><br/>
 Three types of errors have 3 or more errors in the testing set (and correspond to the color-lighted non-diagonal spots in the image).
 <pre>
 True:American_eskimo_dog Predicted:Pomeranian Count:3
@@ -90,8 +90,7 @@ Arround 1 of out of 10 images includes a human face, some times posing and some 
 Since this is essentially a classification task, the main visualizations concern metrics.
 Nevertheless, in the following plot the number of samples per breed in the training set are presented.
 
-<img src="https://github.com/aagiss/DSND_dogbreed/raw/master/samples_per_breed_train.png" style="max-height: 200px; width:auto">
-
+<img src="https://github.com/aagiss/DSND_dogbreed/raw/master/samples_per_breed_train.png" height="1200" width="800">
 
 ## Methodology <a name="methodology"></a>
 
