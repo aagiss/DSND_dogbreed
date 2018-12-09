@@ -1,19 +1,21 @@
-import json
-from flask import Flask
-from flask import render_template, request, redirect, flash, jsonify, send_from_directory
-from keras.preprocessing import image
-import requests
+"""
+Module to run the Flask app or just set it up for serving in Heroku
+"""
 import shutil
 import sys
 import os
 import glob
 import base64
-sys.path.append(os.path.join(os.path.split(__file__)[0], '../models' ))
+import requests
+from flask import Flask
+from flask import render_template, request, redirect, flash, send_from_directory
+from keras.preprocessing import image
+sys.path.append(os.path.join(os.path.split(__file__)[0], '../models'))
 import dog_detector
 import face_detector 
 import breed_classifier
 
-UPLOAD_FOLDER = os.path.join(os.path.split(__file__)[0], 'uploads' )
+UPLOAD_FOLDER = os.path.join(os.path.split(__file__)[0], 'uploads')
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -24,7 +26,8 @@ for img_path in FILES:
     has_dog = 1 if dog_detector.dog_detector(img_path) else 0
     face_count = face_detector.face_detector(img_path)
     breed = breed_classifier.breed_classifier(img_path)
-    prediction = {'has_dog': has_dog, 'face_count': face_count, 'breed': breed}
+    prediction = {'has_dog': has_dog, 'face_count': face_count, 'breed': breed,
+                  'google_query': 'https://www.google.gr/search?q=%s&tbm=isch' % breed.replace('_', '+')}
     PREDICTIONS.append(prediction)
 
 
@@ -32,14 +35,20 @@ for img_path in FILES:
 @app.route('/')
 @app.route('/index')
 def index():
+    """
+    Index page serve
+    """
     # render web page with plotly graphs
     return render_template('master.html',
-                           recent_predictions = reversed(zip(FILES[-12:], 
+                           recent_predictions=reversed(zip(FILES[-12:], 
                                                              PREDICTIONS[-12:])))
 
 
 @app.route('/upload', methods=['POST'])
 def upload():
+    """
+    The image processing endpoint
+    """
     global FILES, PREDICTIONS
     is_file_upload = True
     if not 'query' in request.files:
@@ -47,7 +56,7 @@ def upload():
     else:
         image_file = request.files['query']
         if image_file.filename == '':
-            is_file_uplodad = False
+            is_file_upload = False
     if not is_file_upload and not request.form.get('url'): 
         flash('ERROR: no file selected', 'error')
         return redirect('/index')
@@ -92,7 +101,7 @@ def upload():
     img.save(img_path)
     os.unlink(tmp_path)
     import dog_detector
-    import face_detector 
+    import face_detector
     import breed_classifier
 
     has_dog = 1 if dog_detector.dog_detector(img_path) else 0
@@ -102,7 +111,9 @@ def upload():
         flash('ERROR: No dog or human face detected in image', 'error')
         return redirect('/index')
     breed = breed_classifier.breed_classifier(img_path)
-    prediction = {'has_dog': has_dog, 'face_count': face_count, 'breed': breed, 'img_path': img_url}
+    prediction = {'has_dog': has_dog, 'face_count': face_count, 'breed': breed, 'img_path': img_url,
+                  'google_query': 'https://www.google.gr/search?q=%s&tbm=isch' % 
+                                  breed.replace('_', '+')}
     FILES.append(img_url)
     PREDICTIONS.append(prediction)
     flash(prediction, 'prediction')
@@ -110,19 +121,18 @@ def upload():
 
 @app.route('/uploads/<path:path>')
 def send_image(path):
+    """
+    Serve static images
+    """
     return send_from_directory('uploads', path)
 
 def main():
+    """
+    Main function to run standalone Flask App
+    """
     app.debug = True
     app.run(host='0.0.0.0', port=3001, debug=True)
 
 
 if __name__ == '__main__':
     main()
-
-
-
-
-
-
-

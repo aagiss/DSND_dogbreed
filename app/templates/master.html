@@ -59,6 +59,8 @@
 		<h3>Hello dog!</h3>
 		<h3>Your predicted breed is <br/> {{cur_prediction['breed']}}</h3>
 		{% endif %}
+		<a href="{{cur_prediction['google_query']}}" target="_blank">Search google...</a>
+		<br/>
 		<img class="predicted_image" src="{{cur_prediction['img_path']}}">
       </div>
     {% endfor %}
@@ -98,6 +100,8 @@
 		<h4>dog detected!</h4>
 		{% endif %}
 		<h4>Predicted breed is <br/> <b><i>{{cur_prediction[1]['breed']}}</i></b></h4>
+		<a href="{{cur_prediction[1]['google_query']}}" target="_blank">Search google...</a>
+		<hr/>
 		<img class="predicted_image" src="{{cur_prediction[0]}}">
             </div>
 	    </div>
