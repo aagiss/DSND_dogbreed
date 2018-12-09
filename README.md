@@ -166,6 +166,7 @@ Alternatively, pip installing the same packages using <pre>pip install -r requir
 * Face Detector: <pre>cd models; python face_detector.py IMAGE_FILENAME</pre>
 * Dog Detector: <pre>cd models; python dog_detector.py IMAGE_FILENAME</pre>
 * Breed Classifier: <pre>cd models; python breed_classifier.py IMAGE_FILENAME</pre>
+* The web app: <pre>cd app; python run.py</pre> (Listens locally on port 3001)
 
 ## Licensing, Authors, Acknowledgements <a name="licensing"></a>
 
