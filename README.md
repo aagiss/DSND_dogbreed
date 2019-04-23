@@ -7,10 +7,9 @@ Use Deep Learning and Keras to classify dog breeds or which breed a human face l
 2. [Project Statement](https://github.com/aagiss/DSND_dogbreed#statement)
 3. [Metrics](https://github.com/aagiss/DSND_dogbreed#metrics)
 4. [Data Exploration](https://github.com/aagiss/DSND_dogbreed#dataexploration)
-5. [Data Visualization](https://github.com/aagiss/DSND_dogbreed#datavisualization)
-6. [Methodology](https://github.com/aagiss/DSND_dogbreed#methodology)
-7. [Results](https://github.com/aagiss/DSND_dogbreed#results)
-8. [Conclusion](https://github.com/aagiss/DSND_dogbreed#conclusion)
+5. [Methodology](https://github.com/aagiss/DSND_dogbreed#methodology)
+6. [Results](https://github.com/aagiss/DSND_dogbreed#results)
+7. [Conclusion](https://github.com/aagiss/DSND_dogbreed#conclusion)
 8. [Installation](https://github.com/aagiss/DSND_dogbreed#installation)
 9. [Running the code](https://github.com/aagiss/DSND_dogbreed#running)
 10. [Licensing, Authors, and Acknowledgements](https://github.com/aagiss/DSND_dogbreed#licensing)
@@ -82,13 +81,6 @@ There are 836 test dog images
 Manual inspection of the images revieled that some images contain humans along with dogs.
 Arround 1 of out of 10 images includes a human face, some times posing and some time in unusuall angles.
 
-## Data Visualization <a name="datavisualization"></a>
-
-Since this is essentially a classification task, the main visualizations concern metrics.
-Nevertheless, in the following plot the number of samples per breed in the training set are presented.
-
-<img src="https://github.com/aagiss/DSND_dogbreed/raw/master/samples_per_breed_train.png" height="1200" width="800">
-
 ## Methodology <a name="methodology"></a>
 
 As described above: There are 3 main steps in the process
@@ -103,11 +95,11 @@ Regarding <b>Implementation,</b> ResNet50 and Xception CNNs are used for the dee
 
 On the other hand, for dog breed classification we do not use Xception directly. Rather we use transfer learning. In other words we use a pretrained version of Xception but do replace the final dense layer (which was predicting ImageNet categories) with a different one that predicts dog breeds. This layer (and only this layer) is then trained on a dataset provided by Udacity.
 
-The choice of the Xception network was done through <b>refinement</b> of the results. Initially we used ResNet50 for both dog detection and breed classification. Nevertheless, after testing with all available networks we concluded that Xception produced the best results for our case.
+The choice of the Xception network was done through trial/error testing. Initially we used ResNet50 for both dog detection and breed classification. Nevertheless, after testing with all available networks we concluded that Xception produced the best results for our case.
 
 ## Results <a name="results"></a>
 
-As mentioned above dog detection had nearly perfect accuracy on the testing dataset. However, during manual experiments with random images from the internet we came accross some false positives where the image represented a cat.
+As mentioned above dog detection had nearly perfect accuracy on the testing dataset. However, during manual experiments with random images from the internet we came accross some false positives where the image represented was a cat.
 
 Face detection had perfect recall on our limited tests, nevertheless some false positives have been encountered.
 This was hard to evaluate with the given dataset as some dog images actually contained human faces.
@@ -124,7 +116,7 @@ One point, that was hard to justify was why the Xception network outperformed al
 On imagenet, reports from various sources do report better accuracy for Xception than Inception V3. 
 Nevertheless the difference is minor (<1% or less) compared to our results (5% difference).
 
-Looking at the training logs of the two networks we saw that in Inception, validation loss stopped improving as soon as the 2nd epoch, although training loss continued to decline and validation accuracy did actually improved. I think this strange phenomenon can be attributed to the following: probability assigned by the softmax output of the network is initially consetrated on few classes, however as the model is trained the values of the non-max class increase and although the max class is the correct one probability is spread in such way that crossentropy descreases. We verified this intuition by adding 3 softmax output layers in the output (inception git branch). Adding a softmax output after a previous softmax output helps reduce the entropy of the result. When we did that difference in acuraccy between networks, dropped from 5% to 3%.
+Looking at the training logs of the two networks we saw that in Inception, validation loss <b>stopped improving</b> as soon as the 2nd epoch, although, needless to say, training loss continued to decline and, interestingly, validation accuracy did actually <b>improve</b>. I think this strange phenomenon , which is not overfitting yet as accuracy improves, can be attributed to the following: probability assigned by the softmax output of the network is initially consetrated on few classes, however as the model is trained the probability of the non-max classes increase and although the max class is the correct one, probability is spread in such way that crossentropy (i.e. our loss) increases. The max-class (i.e. prediction) continues to improve for a few epochs (before actually overfitting) but, due to the increasing spread of non-max classes, the overall loss increases. So with inception early-stopping guides us to stop before we should. We verified this intuition by adding 3 softmax output layers in the output (inception git branch). Adding a softmax output after a previous softmax output helps reduce the entropy of the result. When we did that, difference in acuraccy between networks, dropped from 5% to 3%.
 
 One aspect of the implementation that can be improved is about human detection. We do accuratelly detect human faces, however detecting whole human figures would be more challenging and usefull for the concept of this app. OpenCV does not include an out of shelf module for that task and developing one would require lots of training data we did not have access to. Thus, we chose to let this part for a future implementation.
 
